@@ -1,1 +1,4 @@
-<p>Text</p>
+<?php
+if ($action == 'main'){
+    view('main');
+}

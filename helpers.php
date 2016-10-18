@@ -7,12 +7,12 @@ function validate( $array ) {
 
 	// принимаем значенния элементов по ссылке, они изменяться в передаваемом массиве
 	foreach($array as $key => $val) {
-	
+		//var_dump($key);
 		// Проверяем полученное значение "имя" на длину
 		if( $key == 'sender' ) {
 			if ( strlen($val) > 255 ) {
 				echo "<h3>error: need less charackters</h3>";
-				
+				//var_dump($key);
 				// данные невалидные, возвращаем FALSE
 				return false;
 			}
@@ -25,12 +25,16 @@ function validate( $array ) {
 //			 preg_match("/@/",$val);
 			if ( !filter_var($val, FILTER_VALIDATE_EMAIL) || strlen($val) > 255 ) {
 				echo "<h3>error: wrong email</h3>";
+				//var_dump($key);
+				//var_dump(filter_var($val, FILTER_VALIDATE_EMAIL));
 				return false;
 			}
+
 		}		
 		if( $key == 'message' ) {
 			if( strlen( trim( $val ) ) > 5000 ) {
 				echo "<h3>error: string too long</h3>";
+				//r_dump($key);
 				return false;
 			}
 		}
@@ -42,7 +46,7 @@ function validate( $array ) {
 
 // Сохраненние данных
 function saveData( $data, $path ) {
-
+	//var_dump($data);
 	// проверяем существует ли директория
 	if( !file_exists('database') ) {
 		// если нет, создаем
@@ -61,7 +65,8 @@ function saveData( $data, $path ) {
 		$allMessages = $oldMessages;
 		array_push($allMessages, $data);
 	}
-	
+	//var_dump($allMessages);
+
 	// сохраняем все данные, зашифрованные в строку
 	$res = file_put_contents($path, serialize( $allMessages ));
 	

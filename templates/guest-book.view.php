@@ -8,10 +8,10 @@
 //}
 //
 
-
-if (!empty($data) ) {
 var_dump($data);
-    foreach ($data as $val) {
+if (!empty($data) ) {
+
+    foreach ($data['messages'] as $val) {
         echo $val["sender"] . '<br/>';
         echo $val["email"] . '<br/>';
         echo $val["message"] . '<br/>';

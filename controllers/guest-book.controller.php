@@ -39,18 +39,24 @@
 <?php
 if( $action == 'guest-book' ) {
     //Обработка формы
-    $name = isset($_POST['name']) ? $_POST['name']:  '';
+
+    $name = isset($_POST['sender']) ? $_POST['sender']:  '';
     $email = isset($_POST['email']) ? $_POST['email'] : '';
     $message = isset($_POST['message']) ? $_POST['message'] : '';
+    //var_dump($name);
+    //var_dump($email);
+    //var_dump($message);
     if ($name && $email && $message) {
-        $data = array($name,$email,$message);
+        $data = array('sender' => $_POST['sender'],'email' => $_POST['email'],'message' => $_POST['message']);
+        //$data =($name && $email && $message);
         $isValid = validate($data);
+        var_dump($isValid);
         if ($isValid) {
             saveData($data, MESSAGES_TXT_PATH);
         }
     }
 
-
+    //var_dump($data);
     // Делаем выборку с файла, что бы показать юзеру
     $messages = readData(MESSAGES_TXT_PATH);
     if (!empty($newMessages)) {

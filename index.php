@@ -3,7 +3,7 @@ session_start();
 
 ini_set('display_errors',1);
 error_reporting(E_ALL);
-//var_dump ($data);
+
 //$name1 = 'Vasya';
 //$name2 = 'Petya';
 //$name3 = 'Sasha';
@@ -20,7 +20,7 @@ error_reporting(E_ALL);
 //}
 //
 //hello ($name1);
-
+//var_dump($data);
 ////======== конфиги сайта
 include "config.php";
 //var_dump ($config ['admin_login']);
